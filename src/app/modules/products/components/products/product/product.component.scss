@@ -1,0 +1,115 @@
+@import "./../../../../../../assets/styles/variables.scss";
+
+.product-wraper {
+  min-height: 50px;
+  border: 1px solid #a0a0a0;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #344054;
+  overflow: hidden;
+  cursor: pointer;
+
+  .img-container {
+    width: 100%;
+    border-radius: 8px;
+    height: 258px;
+    background-color: #f7f7f7;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition-duration: 300ms;
+    }
+  }
+
+  &:hover img {
+    transform: rotate(1deg) scale(1.05);
+  }
+
+  .product-body {
+    padding: 16px;
+
+    h3 {
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      margin-block: 0 8px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 24px;
+      text-align: justify;
+    }
+
+    .price-container {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 21px;
+
+      .price {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+
+        .amount {
+          font-weight: 700;
+        }
+
+        &.has-discount {
+          text-decoration: line-through;
+        }
+      }
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .rewiews {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 16px;
+
+      .rating {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 700;
+        color: #f4b000;
+      }
+
+      .reviews-count {
+        margin-inline-start: 4px;
+        color: #1e1e1e;
+      }
+    }
+
+    button {
+      width: 100%;
+      min-height: 50px;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+      color: #344054;
+      background-color: rgba($main-color, 0.9);
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $main-color;
+      }
+    }
+  }
+}

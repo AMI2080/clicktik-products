@@ -1,0 +1,30 @@
+<div class="products-wraper">
+  <h2>
+    iPhone
+  </h2>
+  <div class="breadcrumb">
+    Home / Products / Smart Phones / iPhone
+  </div>
+  <div class="result-wraper">
+    <aside>
+      <h3>
+        Products
+      </h3>
+      <label [ngClass]="{active: selectedCategory === null}">
+        <input type="radio" name="category" [value]="null" [(ngModel)]="selectedCategory" />
+        All ({{ 0 }})
+      </label>
+      @for (category of categories; track $index) {
+        <label [ngClass]="{active: selectedCategory === category.name}">
+          <input type="radio" name="category" [value]="category.name" [(ngModel)]="selectedCategory" />
+          {{ category.name }} ({{ 0 }})
+        </label>
+      }
+    </aside>
+    <div class="products">
+      @for (product of [0,1,2,3,4,5]; track $index) {
+        <app-product></app-product>
+      }
+    </div>
+  </div>
+</div>

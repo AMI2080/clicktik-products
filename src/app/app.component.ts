@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'clicktik-products';
+  public isAuth: boolean = false;
+
+  public search: string = '';
+
+  public cartItemsCount: number | '+9' = 3;
 }

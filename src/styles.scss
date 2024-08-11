@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import "./assets/styles/variables.scss";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: Inter;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fff5;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba($main-color, 0.5);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: $main-color;
+}
+
+body {
+  margin: 0;
+
+  app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    height: 100vh;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    padding: 18px 32px;
+    margin: 0 auto;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: 1px solid #999;
+  border-radius: 8px;
+  color: #333;
+  padding: 7px;
+  outline: none;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  &:focus {
+    border-color: $main-color;
+  }
+}
