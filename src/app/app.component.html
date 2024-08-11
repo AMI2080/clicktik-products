@@ -5,24 +5,37 @@
       ClickTik
     </div>
     <div class="page-links">
-      <a [routerLink]="['']">
-        Home
-      </a>
+      <a [routerLink]="['']"> Home </a>
     </div>
     @if (isAuth) {
-      <div class="search-input-container">
-        <input type="text" class="search-input" [(ngModel)]="search" placeholder="Search" />
+    <div class="search-input-container">
+      <input
+        type="text"
+        class="search-input"
+        [(ngModel)]="search"
+        placeholder="Search"
+      />
+    </div>
+    <div class="cart">
+      <img src="assets/images/cart.png" width="17" height="17" alt="cart" />
+      <span *ngIf="cartItemsCount" class="count-items">
+        {{ cartItemsCount }}
+      </span>
+    </div>
+    <div class="goto-account">
+      <span (click)="openUserDropdown()">
+        Account
+      </span>
+      @if (showUserDropdown) {
+      <div class="user-dropdown-bg" (click)="closeUserDropdown()"></div>
+      <div class="user-dropdown">
+        <button (click)="logout()">logout</button>
       </div>
-      <div class="cart">
-        <img src="assets/images/cart.png" width="17" height="17" alt="cart" />
-        <span *ngIf="cartItemsCount" class="count-items">
-          {{ cartItemsCount }}
-        </span>
-      </div>
-      <a class="goto-account">Account</a>
-    }
-    @else {
-      <a class="goto-login" [routerLink]="['', 'auth', 'login']">Login</a>
+      }
+    </div>
+
+    } @else {
+    <a class="goto-login" [routerLink]="['', 'auth', 'login']">Login</a>
     }
   </div>
 </header>
@@ -38,10 +51,7 @@
         <img src="assets/images/logo.png" width="32" height="32" alt="log" />
         ClickTik
       </div>
-      <div class="rights">
-        &copy; 2022 ClickTik
-      </div>
+      <div class="rights">&copy; 2022 ClickTik</div>
     </div>
   </footer>
 </main>
-

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { LoginCredential, User } from '../types';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AuthService {
     null
   );
 
-  public constructor(private http: HttpClient) {}
+  public constructor(private http: HttpClient, private router: Router) {}
 
   public login(credential: LoginCredential): Observable<User> {
     return this.http
@@ -49,5 +50,6 @@ export class AuthService {
   public logout(): void {
     this.user$.next(null);
     localStorage.removeItem('token');
+    this.router.navigate(['', 'auth', 'login']);
   }
 }

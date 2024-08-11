@@ -10,14 +10,29 @@ import { take } from 'rxjs';
 export class AppComponent {
   public isAuth: boolean = false;
 
+  public showUserDropdown: boolean = false;
+
   public search: string = '';
 
   public cartItemsCount: number | '+9' = 3;
 
-  public constructor(authService: AuthService) {
+  public constructor(private authService: AuthService) {
     authService.refreshToken().pipe(take(1)).subscribe();
     authService.user$.subscribe((user) => {
       this.isAuth = !!user;
     });
+  }
+
+  public logout(): void {
+    this.closeUserDropdown();
+    this.authService.logout()
+  }
+
+  public openUserDropdown(): void {
+    this.showUserDropdown = true;
+  }
+
+  public closeUserDropdown(): void {
+    this.showUserDropdown = false;
   }
 }
