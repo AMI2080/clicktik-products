@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, switchMap, tap } from 'rxjs';
 import { LoginCredential, User } from '../types';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,44 @@ export class AuthService {
   );
 
   public constructor(private http: HttpClient, private router: Router) {}
+
+  public isAuthenticated(): Observable<boolean> {
+    return this.user$.pipe(
+      switchMap((user) => {
+        if (user) {
+          return of(true);
+        } else {
+          if (localStorage.getItem('token') == null) {
+            return of(false);
+          }
+          return this.refreshToken().pipe(
+            switchMap((userInfo) => {
+              return of(!!userInfo);
+            })
+          );
+        }
+      })
+    );
+  }
+
+  public isGuest(): Observable<boolean> {
+    return this.user$.pipe(
+      switchMap((user) => {
+        if (user) {
+          return of(false);
+        } else {
+          if (localStorage.getItem('token') == null) {
+            return of(true);
+          }
+          return this.refreshToken().pipe(
+            switchMap((userInfo) => {
+              return of(!userInfo);
+            })
+          );
+        }
+      })
+    );
+  }
 
   public login(credential: LoginCredential): Observable<User> {
     return this.http
