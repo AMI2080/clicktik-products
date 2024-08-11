@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  public isAuth: boolean = false;
+
+  public search: string = '';
+
+  public cartItemsCount: number | '+9' = 3;
+}

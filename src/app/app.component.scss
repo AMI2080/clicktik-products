@@ -1,0 +1,118 @@
+@import "../assets/styles/variables.scss";
+
+header {
+  padding: 18px;
+  background-color: #fff;
+  border-bottom: 1px solid #424242;
+
+  .container {
+    width: 100%;
+    max-width: 1216px;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    & > * {
+      height: fit-content;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #000;
+      min-width: 132px;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .page-links {
+      flex: 1;
+    }
+
+    a {
+      color: #667085;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+
+    .search-input-container {
+      position: relative;
+
+      .search-input {
+        min-width: 200px;
+        max-width: 319px;
+        border-radius: 8px;
+        color: #333;
+        font-size: 14px;
+        line-height: 17px;
+        height: 32px;
+        border: 1px solid #999;
+        padding: 7px;
+        padding-left: 36px;
+        outline: none;
+
+        &::placeholder {
+          color: #999;
+        }
+
+        &:focus {
+            border-color: $main-color;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        top: 50%;
+        left: 11px;
+        transform: translateY(-50%);
+        background-image: url(../assets/images/search.png);
+      }
+    }
+
+    .cart {
+        position: relative;
+
+        .count-items {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            line-height: 16px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            text-align: center;
+            background-color: $main-color;
+            color: #344054;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+    }
+    
+    .goto-account {
+        margin-inline-start: 6px;
+    }
+  }
+}
+
+main {
+  min-height: 100%;
+  flex: 1;
+  background-color: #fff;
+}
