@@ -1,14 +1,10 @@
 @import "../assets/styles/variables.scss";
 
 header {
-  padding: 18px;
   background-color: #fff;
   border-bottom: 1px solid #424242;
 
   .container {
-    width: 100%;
-    max-width: 1216px;
-    margin: auto;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -26,6 +22,7 @@ header {
       gap: 10px;
       color: #000;
       min-width: 132px;
+      cursor: pointer;
 
       img {
         width: 32px;
@@ -53,15 +50,10 @@ header {
       .search-input {
         min-width: 200px;
         max-width: 319px;
-        border-radius: 8px;
-        color: #333;
         font-size: 14px;
         line-height: 17px;
         height: 32px;
-        border: 1px solid #999;
-        padding: 7px;
         padding-left: 36px;
-        outline: none;
 
         &::placeholder {
           color: #999;
@@ -120,19 +112,21 @@ main {
 
   .content {
     flex: 1;
+    display: flex;
+
+    .container {
+        width: 100%;
+    }
   }
 
   footer {
     background-color: #1d2939;
     font-size: 16px;
     line-height: 24px;
-    padding-block: 48px;
+    padding-block: 30px;
     padding-inline: 18px;
     
     .container {
-        width: 100%;
-        max-width: 1216px;
-        margin: auto;
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
@@ -149,6 +143,7 @@ main {
           gap: 10px;
           font-weight: 500;
           color: #fff;
+          cursor: pointer;
     
           img {
             width: 32px;

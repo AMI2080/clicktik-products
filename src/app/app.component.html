@@ -1,6 +1,6 @@
 <header>
   <div class="container">
-    <div class="logo-container">
+    <div class="logo-container" [routerLink]="['']">
       <img src="assets/images/logo.png" width="32" height="32" alt="log" />
       ClickTik
     </div>
@@ -22,17 +22,19 @@
       <a class="goto-account">Account</a>
     }
     @else {
-      <a class="goto-login">Login</a>
+      <a class="goto-login" [routerLink]="['', 'auth', 'login']">Login</a>
     }
   </div>
 </header>
 <main>
   <div class="content">
-    <router-outlet></router-outlet>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
   <footer>
     <div class="container">
-      <div class="logo-container">
+      <div class="logo-container" [routerLink]="['']">
         <img src="assets/images/logo.png" width="32" height="32" alt="log" />
         ClickTik
       </div>

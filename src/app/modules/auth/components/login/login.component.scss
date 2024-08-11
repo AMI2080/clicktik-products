@@ -1,0 +1,74 @@
+@import './../../../../../assets/styles/variables.scss';
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .login-wraper {
+    width: 100%;
+    max-width: 360px;
+    height: fit-content;
+
+    img {
+      display: block;
+      width: 48px;
+      height: 48px;
+      margin: auto;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      line-height: 38px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #101828;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      color: #667085;
+      margin-bottom: 32px;
+    }
+
+    label {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #344054;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        min-height: 44px;
+        margin-top: 4px;
+        background-color: rgba($main-color, .9);
+        color: #344054;
+        border: none;
+        border-radius: 8px;
+        width: 100%;
+        font-size: 16px;
+        line-height: 24px;
+        outline: none;
+
+        &:hover,
+        &:focus {
+            background-color: $main-color;
+        }
+    }
+  }
+}
