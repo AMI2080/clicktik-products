@@ -18,10 +18,13 @@
 
   .result-wraper {
     display: grid;
+    gap: 10px;
     grid-template-columns: 1fr 1fr;
     
     .products {
       display: grid;
+      gap: 10px;
+      height: fit-content;
       grid-template-columns: 1fr;
     }
     
@@ -43,6 +46,7 @@
 
     aside {
       padding: 12px;
+      height: fit-content;
       border: 1px solid #a0a0a0;
       border-radius: 8px;
       color: #1e1e1e;
