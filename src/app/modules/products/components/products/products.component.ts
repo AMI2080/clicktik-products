@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Product } from '../../../../types';
+import { ProductService } from '../../../../services';
 
 type Catergory = {
   slug: string;
@@ -134,5 +136,17 @@ export class ProductsComponent {
     },
   ];
 
+  public products: Product[] = [];
+
   public selectedCategory: string | null = null;
+
+  public constructor(private productService: ProductService) {
+    this.getProduct();
+  }
+
+  private getProduct(): void {
+    this.productService.products().subscribe((response) => {
+      this.products = response.products;
+    });
+  }
 }

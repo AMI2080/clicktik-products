@@ -22,8 +22,8 @@
       }
     </aside>
     <div class="products">
-      @for (product of [0,1,2,3,4,5]; track $index) {
-        <app-product></app-product>
+      @for (product of products; track $index) {
+        <app-product [product]="product"></app-product>
       }
     </div>
   </div>
