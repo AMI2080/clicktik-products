@@ -68,7 +68,7 @@ header {
         }
 
         &:focus {
-            border-color: $main-color;
+          border-color: $main-color;
         }
       }
 
@@ -85,28 +85,28 @@ header {
     }
 
     .cart {
-        position: relative;
+      position: relative;
 
-        .count-items {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            font-size: 10px;
-            line-height: 16px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            text-align: center;
-            background-color: $main-color;
-            color: #344054;
-            position: absolute;
-            top: 0;
-            right: 0;
-            transform: translate(50%, -50%);
-        }
+      .count-items {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+        line-height: 16px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        text-align: center;
+        background-color: $main-color;
+        color: #344054;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+      }
     }
-    
+
     .goto-account {
-        margin-inline-start: 6px;
+      margin-inline-start: 6px;
     }
   }
 }
@@ -115,4 +115,51 @@ main {
   min-height: 100%;
   flex: 1;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex: 1;
+  }
+
+  footer {
+    background-color: #1d2939;
+    font-size: 16px;
+    line-height: 24px;
+    padding-block: 48px;
+    padding-inline: 18px;
+    
+    .container {
+        width: 100%;
+        max-width: 1216px;
+        margin: auto;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        &>* {
+            height: fit-content;
+        }
+    
+        .logo-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 500;
+          color: #fff;
+    
+          img {
+            width: 32px;
+            height: 32px;
+          }
+        }
+    
+        .rights {
+          color: #98a2b3;
+        }
+    }
+
+  }
 }
