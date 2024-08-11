@@ -25,6 +25,27 @@ export class AuthService {
       );
   }
 
+  public getCurrntAuthUser(): Observable<User> {
+    return this.http.get<User>(`${environment.ApiUrl}/auth/me`);
+  }
+
+  public refreshToken(): Observable<User> {
+    return this.http
+      .post<User>(`${environment.ApiUrl}/auth/refresh`, {
+        refreshToken: localStorage.getItem('token'),
+      })
+      .pipe(
+        tap((response: User) => {
+          if (response.token) {
+            this.user$.next(response);
+            localStorage.setItem('token', response.token);
+          } else {
+            this.logout();
+          }
+        })
+      );
+  }
+
   public logout(): void {
     this.user$.next(null);
     localStorage.removeItem('token');
