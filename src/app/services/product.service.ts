@@ -17,6 +17,12 @@ type ProductsResponse = {
 export class ProductService {
   public search: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
+  public cartCount: number = 0;
+
+  public cartItemsCount: BehaviorSubject<number> = new BehaviorSubject<number>(
+    0
+  );
+
   public constructor(private http: HttpClient) {}
 
   public products(
@@ -41,9 +47,12 @@ export class ProductService {
       limit,
       skip: (page - 1) * limit,
     };
-    return this.http.get<ProductsResponse>(`${environment.ApiUrl}/products/category/${category}`, {
-      params,
-    });
+    return this.http.get<ProductsResponse>(
+      `${environment.ApiUrl}/products/category/${category}`,
+      {
+        params,
+      }
+    );
   }
 
   public searchInProduct(
@@ -61,5 +70,15 @@ export class ProductService {
         params,
       }
     );
+  }
+
+  public addItemToCart(product: Product): void {
+    this.cartCount++;
+    this.cartItemsCount.next(this.cartCount);
+  }
+
+  public emptyCart(): void {
+    this.cartCount = 0;
+    this.cartItemsCount.next(this.cartCount);
   }
 }

@@ -18,10 +18,19 @@
       />
     </div>
     <div class="cart">
-      <img src="assets/images/cart.png" width="17" height="17" alt="cart" />
-      <span *ngIf="cartItemsCount" class="count-items">
-        {{ cartItemsCount }}
+      <img src="assets/images/cart.png" width="17" height="17" alt="cart" (click)="openCartDropdown()" />
+      <span *ngIf="cartItemsCount" class="count-items" [title]="cartItemsCount + ' Items'" (click)="openCartDropdown()">
+        {{ cartItemsCount <= 9 ? cartItemsCount : '+9' }}
       </span>
+      @if (showCartDropdown) {
+      <div class="cart-dropdown-bg" (click)="closeCartDropdown()"></div>
+      <div class="cart-dropdown">
+        <p>
+          You have ({{ cartItemsCount }}) Items in your cart.
+        </p>
+        <button (click)="emptyCart()">Empty cart</button>
+      </div>
+      }
     </div>
     <div class="goto-account">
       <span (click)="openUserDropdown()">

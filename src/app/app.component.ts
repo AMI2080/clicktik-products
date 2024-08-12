@@ -12,9 +12,11 @@ export class AppComponent {
 
   public showUserDropdown: boolean = false;
 
+  public showCartDropdown: boolean = false;
+
   public search: string = '';
 
-  public cartItemsCount: number | '+9' = 3;
+  public cartItemsCount: number = 0;
 
   public constructor(
     public productService: ProductService,
@@ -23,6 +25,10 @@ export class AppComponent {
     authService.refreshToken().pipe(take(1)).subscribe();
     authService.user$.subscribe((user) => {
       this.isAuth = !!user;
+    });
+
+    productService.cartItemsCount.subscribe((count) => {
+      this.cartItemsCount = count;
     });
   }
 
@@ -37,5 +43,18 @@ export class AppComponent {
 
   public closeUserDropdown(): void {
     this.showUserDropdown = false;
+  }
+
+  public emptyCart(): void {
+    this.closeCartDropdown();
+    this.productService.emptyCart();
+  }
+
+  public openCartDropdown(): void {
+    this.showCartDropdown = true;
+  }
+
+  public closeCartDropdown(): void {
+    this.showCartDropdown = false;
   }
 }
