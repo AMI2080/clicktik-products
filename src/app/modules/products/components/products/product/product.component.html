@@ -2,6 +2,9 @@
   <div class="img-container">
     <img [src]="product.thumbnail" [alt]="product.title" />
   </div>
+  <div *ngIf="product.discountPercentage" class="discount-label">
+    - {{ product.discountPercentage }}%
+  </div>
   <div class="product-body">
     <h3>
       {{ product.title }}
