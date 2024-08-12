@@ -11,8 +11,6 @@ export class ProductComponent {
   @Input()
   public product: Product;
 
-  public selectedCategory: string | null = null;
-
   public constructor(private productService: ProductService) {}
 
   public addToCart(product: Product): void {

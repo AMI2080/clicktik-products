@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { Catergory, Product } from '../../../../types';
 import { ProductService } from '../../../../services';
 
@@ -23,9 +23,7 @@ export class ProductsComponent {
 
   public products: Product[] = [];
 
-  public selectedCategory: string | null = null;
-
-  public category: string | null;
+  public selectedCategory: Catergory | null = null;
 
   private gettingType: 'search' | 'all' | 'category' = 'all';
 
@@ -34,7 +32,9 @@ export class ProductsComponent {
       this.search = search;
       this.searchInProduct();
     });
+
     this.getProducts();
+
     productService.Categories().subscribe((list) => {
       this.categories = list;
       this.categories.forEach((category) => {
@@ -50,6 +50,7 @@ export class ProductsComponent {
   private searchInProduct(): void {
     this.currentPage = 1;
     this.selectedCategory = null;
+
     this.productService
       .searchInProduct(this.perPage, this.currentPage, this.search)
       .subscribe((response) => {
@@ -68,9 +69,9 @@ export class ProductsComponent {
     this.search = '';
     this.perPage = perPage;
     this.currentPage = currentPage;
+
     if (!category) {
       this.selectedCategory = null;
-      this.category = null;
       this.productService
         .products(this.perPage, this.currentPage)
         .subscribe((response) => {
@@ -84,7 +85,6 @@ export class ProductsComponent {
       this.productService
         .productsByCategory(category, this.perPage, this.currentPage)
         .subscribe((response) => {
-          this.category = category;
           this.gettingType = 'category';
           this.products = response.products;
           this.totalPages = Math.ceil(response.total / this.perPage);
@@ -95,13 +95,14 @@ export class ProductsComponent {
 
   public goTo(page: number): void {
     this.currentPage = page;
+
     switch (this.gettingType) {
       case 'all':
         this.getProducts(null, this.perPage, this.currentPage);
         break;
 
       case 'category':
-        this.getProducts(this.category, this.perPage, this.currentPage);
+        this.getProducts(this.selectedCategory?.slug, this.perPage, this.currentPage);
         break;
       case 'search':
         this.searchInProduct();
