@@ -1,0 +1,139 @@
+@import "./../../../../../../assets/styles/variables.scss";
+
+.product-wraper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #a0a0a0;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #344054;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+
+  .discount-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: fit-content;
+    max-width: calc(100% - 2 * 16px);
+    height: fit-content;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #344054;
+    background-color: $main-color;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+  }
+
+  .img-container {
+    width: 100%;
+    border-radius: 8px;
+    height: 258px;
+    background-color: #f7f7f7;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition-duration: 300ms;
+    }
+  }
+
+  &:hover img {
+    transform: rotate(1deg) scale(1.05);
+  }
+
+  .product-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 16px;
+
+    h3 {
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      margin-block: 0 8px;
+    }
+
+    p {
+      flex: 1;
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 24px;
+      text-align: justify;
+    }
+
+    .price-container {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 21px;
+
+      .price {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+
+        .amount {
+          font-weight: 700;
+        }
+
+        &.has-discount {
+          text-decoration: line-through;
+        }
+      }
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .rewiews {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 16px;
+
+      .rating {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 700;
+        color: #f4b000;
+      }
+
+      .reviews-count {
+        margin-inline-start: 4px;
+        color: #1e1e1e;
+      }
+    }
+
+    button {
+      width: 100%;
+      min-height: 50px;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+      color: #344054;
+      background-color: rgba($main-color, 0.9);
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $main-color;
+      }
+    }
+  }
+}

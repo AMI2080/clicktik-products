@@ -1,0 +1,61 @@
+<div class="product-wraper" [title]="product.title" *ngIf="product">
+  <div class="img-container">
+    <img [src]="product.thumbnail" [alt]="product.title" />
+  </div>
+  <div *ngIf="product.discountPercentage" class="discount-label">
+    - {{ product.discountPercentage }}%
+  </div>
+  <div class="product-body">
+    <h3>
+      {{ product.title }}
+    </h3>
+    <p>
+      {{ product.description }}
+    </p>
+    <div class="price-container">
+      <span
+        class="price"
+        [ngClass]="{ 'has-discount': product.discountPercentage > 0 }"
+      >
+        <span class="amount">
+          {{ product.price }}
+        </span>
+        USD
+      </span>
+      <span *ngIf="product.discountPercentage > 0" class="price">
+        <span class="amount">
+          {{ product.price * (100 - product.discountPercentage) / 100 | number:'1.0-2' }}
+        </span>
+        USD
+      </span>
+    </div>
+    <div class="details">
+      <div>
+        Brand:
+        <b>
+          {{ product.brand }}
+        </b>
+      </div>
+      <div>
+        Category:
+        <b>
+          {{ product.category }}
+        </b>
+      </div>
+      <div>
+        In stock:
+        <b>
+          {{ product.stock }}
+        </b>
+      </div>
+    </div>
+    <div class="rewiews">
+      <span class="reviews-count"> ({{ product.reviews.length }}) </span>
+      <span class="rating">
+        {{ product.rating }}
+      </span>
+      <img src="assets/images/star.svg" width="17" height="17" alt="Rating" />
+    </div>
+    <button (click)="addToCart(product)">ADD TO CART</button>
+  </div>
+</div>

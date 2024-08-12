@@ -1,0 +1,50 @@
+<div class="products-wraper">
+  <h2>{{ selectedCategory?.name || search || "Products" }}</h2>
+  <div class="breadcrumb" *ngIf="selectedCategory || search">Home / Products / <b>{{ selectedCategory?.name || search }}</b></div>
+  <div class="breadcrumb" *ngIf="!selectedCategory && !search">Home / <b>Products</b></div>
+  <div class="result-wraper">
+    <aside>
+      <h3>Products</h3>
+      <label [ngClass]="{ active: selectedCategory === null }">
+        <input
+          type="radio"
+          name="category"
+          [value]="null"
+          [(ngModel)]="selectedCategory"
+          (click)="getProducts()"
+        />
+        All ({{ allItemsCount || 0 }})
+      </label>
+      @for (category of categories; track $index) {
+      <label [ngClass]="{ active: selectedCategory?.slug === category.slug }">
+        <input
+          type="radio"
+          name="category"
+          [value]="category"
+          [(ngModel)]="selectedCategory"
+          (click)="getProducts(category.slug)"
+        />
+        {{ category.name }} ({{ category.count || 0 }})
+      </label>
+      }
+    </aside>
+    <div class="results-container">
+      <div *ngIf="!!search" class="products-header">
+        <div class="found-items">
+          ({{ totalItems }}) Products Found
+        </div>
+      </div>
+      <div class="products">
+        @for (product of products; track $index) {
+        <app-product [product]="product"></app-product>
+        }
+      </div>
+      <app-paginator
+        *ngIf="totalPages > 1"
+        (change)="goTo($event)"
+        [current]="currentPage"
+        [total]="totalPages"
+      ></app-paginator>
+    </div>
+  </div>
+</div>

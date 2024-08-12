@@ -1,0 +1,17 @@
+<div class="paginatior-container">
+  <button (click)="changePageTo(current - 1)" [disabled]="current === 1">
+    <img src="assets/images/arrow-to-left.svg" alt="Left" />
+  </button>
+  @for (item of paginationArray; track $index) {
+      <button
+        [disabled]="item === '...'"
+        (click)="changePageTo(item)"
+        [ngClass]="{ current: current === item }"
+      >
+        {{ item }}
+      </button>
+ }
+  <button (click)="changePageTo(current + 1)" [disabled]="current === total">
+    <img src="assets/images/arrow-to-right.svg" alt="Right" />
+  </button>
+</div>
