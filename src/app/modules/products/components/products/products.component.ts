@@ -149,10 +149,10 @@ export class ProductsComponent {
   public products: Product[] = [];
 
   public selectedCategory: string | null = null;
+  
+  public category: string | null;
 
   private gettingType: 'search' | 'all' | 'category' = 'all';
-
-  private category: string | null;
 
   public constructor(private productService: ProductService) {
     productService.search.subscribe((search) => {
@@ -164,6 +164,7 @@ export class ProductsComponent {
 
   private searchInProduct(): void {
     this.currentPage = 1;
+    this.selectedCategory = null;
     this.productService
       .searchInProduct(this.perPage, this.currentPage, this.search)
       .subscribe((response) => {
@@ -183,6 +184,7 @@ export class ProductsComponent {
     this.perPage = perPage;
     this.currentPage = currentPage;
     if (!category) {
+      this.selectedCategory = null;
       this.category = null;
       this.productService
         .products(this.perPage, this.currentPage)
