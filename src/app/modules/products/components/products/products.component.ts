@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Product } from '../../../../types';
 import { ProductService } from '../../../../services';
 
@@ -13,6 +13,12 @@ type Catergory = {
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
+  public currentPage: number = 1;
+
+  public perPage: number = 12;
+
+  public totalPages: number = 1;
+
   public categories: Catergory[] = [
     {
       slug: 'beauty',
@@ -140,13 +146,22 @@ export class ProductsComponent {
 
   public selectedCategory: string | null = null;
 
-  public constructor(private productService: ProductService) {
+  public constructor(private productService: ProductService, private changeDetectorRef: ChangeDetectorRef) {
     this.getProduct();
   }
-
+  
   private getProduct(): void {
-    this.productService.products().subscribe((response) => {
-      this.products = response.products;
-    });
+    this.productService
+    .products(this.perPage, this.currentPage)
+    .subscribe((response) => {
+        this.products = response.products;
+        this.totalPages = Math.ceil(response.total / this.perPage);
+        this.changeDetectorRef.detectChanges();
+      });
+  }
+
+  public goTo(page: number): void {
+    this.currentPage = page;
+    this.getProduct();
   }
 }
