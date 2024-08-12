@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services';
+import { AuthService, ProductService } from './services';
 import { take } from 'rxjs';
 
 @Component({
@@ -16,7 +16,10 @@ export class AppComponent {
 
   public cartItemsCount: number | '+9' = 3;
 
-  public constructor(private authService: AuthService) {
+  public constructor(
+    public productService: ProductService,
+    private authService: AuthService
+  ) {
     authService.refreshToken().pipe(take(1)).subscribe();
     authService.user$.subscribe((user) => {
       this.isAuth = !!user;
@@ -25,7 +28,7 @@ export class AppComponent {
 
   public logout(): void {
     this.closeUserDropdown();
-    this.authService.logout()
+    this.authService.logout();
   }
 
   public openUserDropdown(): void {

@@ -10,6 +10,7 @@
           name="category"
           [value]="null"
           [(ngModel)]="selectedCategory"
+          (click)="getProducts()"
         />
         All ({{ 0 }})
       </label>
@@ -20,12 +21,18 @@
           name="category"
           [value]="category.name"
           [(ngModel)]="selectedCategory"
+          (click)="getProducts(category.name)"
         />
         {{ category.name }} ({{ 0 }})
       </label>
       }
     </aside>
     <div class="results-container">
+      <div *ngIf="!!search" class="products-header">
+        <div class="found-items">
+          ({{ totalItems }}) Products Found
+        </div>
+      </div>
       <div class="products">
         @for (product of products; track $index) {
         <app-product [product]="product"></app-product>

@@ -3,7 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnInit,
+  DoCheck,
   Output,
 } from '@angular/core';
 
@@ -12,7 +12,7 @@ import {
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent implements DoCheck {
   @Input()
   public total: number = 1;
 
@@ -24,7 +24,7 @@ export class PaginatorComponent implements OnInit {
 
   public paginationArray: (string | number)[] = [];
 
-  public ngOnInit(): void {
+  public ngDoCheck(): void {
     this.updatePaginationArray();
   }
 
