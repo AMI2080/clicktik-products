@@ -13,16 +13,23 @@
     <p>
         Welcome back! Please enter your details.
     </p>
-    <label>
-        Email
-    </label>
-    <input type="email" placeholder="Enter your email" />
-    <label>
-        Password
-    </label>
-    <input type="password" placeholder="********" />
-    <button>
-        Sign in
-    </button>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <label>
+          Email
+      </label>
+      <input type="text" formControlName="username" placeholder="Enter your email" />
+      <label>
+          Password
+      </label>
+      <input type="password" formControlName="password" placeholder="********" />
+      @if (loginError) {
+        <small class="login-error">
+          {{ loginError }}
+        </small>
+      }
+      <button type="submit" [disabled]="form.invalid || isLoading">
+          Sign in
+      </button>
+    </form>
   </div>
 </div>

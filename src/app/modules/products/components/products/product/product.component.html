@@ -1,4 +1,4 @@
-<div class="product-wraper" [title]="product.title">
+<div class="product-wraper" [title]="product.title" *ngIf="product">
   <div class="img-container">
     <img [src]="product.thumbnail" [alt]="product.title" />
   </div>
@@ -21,7 +21,7 @@
       </span>
       <span *ngIf="product.discountPercentage > 0" class="price">
         <span class="amount">
-          {{ product.price }}
+          {{ product.price * (100 - product.discountPercentage) / 100 | number:'1.0-2' }}
         </span>
         USD
       </span>
