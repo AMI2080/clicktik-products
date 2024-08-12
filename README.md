@@ -1,3 +1,13 @@
+
+# Design
+
+The design for this task is on this [Figma Board](https://github.com/angular/angular-cli).
+
+# APIs
+
+- APIs: [Documentaion](https://dummyjson.com/docs).
+- Authentication: [Users](https://dummyjson.com/users).
+
 # ClicktikProducts
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
