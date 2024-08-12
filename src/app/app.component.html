@@ -13,7 +13,7 @@
         type="text"
         class="search-input"
         [(ngModel)]="search"
-        (change)="productService.search.next(search)"
+        (change)="searchInProducts()"
         placeholder="Search"
       />
     </div>

@@ -1,5 +1,5 @@
 <div class="products-wraper">
-  <h2>{{selectedCategory?.name || search || "Products" }}</h2>
+  <h2>{{ selectedCategory?.name || search || "Products" }}</h2>
   <div class="breadcrumb" *ngIf="selectedCategory || search">Home / Products / <b>{{ selectedCategory?.name || search }}</b></div>
   <div class="breadcrumb" *ngIf="!selectedCategory && !search">Home / <b>Products</b></div>
   <div class="result-wraper">

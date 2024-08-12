@@ -23,6 +23,7 @@ export class AppComponent {
     private authService: AuthService
   ) {
     authService.refreshToken().pipe(take(1)).subscribe();
+
     authService.user$.subscribe((user) => {
       this.isAuth = !!user;
     });
@@ -30,6 +31,10 @@ export class AppComponent {
     productService.cartItemsCount.subscribe((count) => {
       this.cartItemsCount = count;
     });
+  }
+
+  public searchInProducts(): void {
+    this.productService.search.next(this.search);
   }
 
   public logout(): void {

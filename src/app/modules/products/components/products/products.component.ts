@@ -104,6 +104,7 @@ export class ProductsComponent {
       case 'category':
         this.getProducts(this.selectedCategory?.slug, this.perPage, this.currentPage);
         break;
+
       case 'search':
         this.searchInProduct();
         break;
