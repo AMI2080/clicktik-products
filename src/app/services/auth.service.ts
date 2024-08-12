@@ -1,7 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { BehaviorSubject, Observable, of, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  Observable,
+  of,
+  switchMap,
+  take,
+  tap,
+} from 'rxjs';
 import { LoginCredential, User } from '../types';
 import { Router } from '@angular/router';
 
@@ -68,7 +76,11 @@ export class AuthService {
     return this.http.get<User>(`${environment.ApiUrl}/auth/me`);
   }
 
-  public refreshToken(): Observable<User> {
+  public refreshToken(): Observable<User | null> {
+    if (!localStorage.getItem('token')) {
+      this.logout();
+      return of(null);
+    }
     return this.http
       .post<User>(`${environment.ApiUrl}/auth/refresh`, {
         refreshToken: localStorage.getItem('token'),
