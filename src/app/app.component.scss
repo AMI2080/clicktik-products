@@ -79,7 +79,8 @@ header {
 
     .cart {
       position: relative;
-
+      cursor: pointer;
+      
       .count-items {
         display: inline-block;
         width: 20px;
@@ -96,12 +97,56 @@ header {
         right: 0;
         transform: translate(50%, -50%);
       }
+
+      .cart-dropdown-bg {
+        position: fixed;
+        background-color: #0003;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+      
+      .cart-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 2px;
+        width: fit-content;
+        height: fit-content;
+        padding: 8px;
+        background-color: #fff;
+        border: 1px solid #a0a0a0;
+        border-radius: 8px;
+        max-width: 200px;
+        z-index: 1;
+  
+        button {
+          background-color: rgba(#d55, 0.9);
+          color: #fff;
+          min-width: 150px;
+          min-height: 48px;
+          border: none;
+          outline: none;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+  
+          &:focus,
+          &:active,
+          &:hover {
+            background-color: #d55;
+          }
+        }
+      }
     }
 
     .goto-account {
       margin-inline-start: 6px;
       position: relative;
-
+      
       & > span {
         cursor: pointer;
       }
@@ -113,8 +158,9 @@ header {
         right: 0;
         top: 0;
         bottom: 0;
+        z-index: 1;
       }
-
+      
       .user-dropdown {
         position: absolute;
         top: 100%;
@@ -127,7 +173,8 @@ header {
         border: 1px solid #a0a0a0;
         border-radius: 8px;
         max-width: 200px;
-
+        z-index: 1;
+        
         button {
           background-color: rgba(#d55, 0.9);
           color: #fff;

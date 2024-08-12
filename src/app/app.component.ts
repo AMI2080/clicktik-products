@@ -12,18 +12,29 @@ export class AppComponent {
 
   public showUserDropdown: boolean = false;
 
+  public showCartDropdown: boolean = false;
+
   public search: string = '';
 
-  public cartItemsCount: number | '+9' = 3;
+  public cartItemsCount: number = 0;
 
   public constructor(
     public productService: ProductService,
     private authService: AuthService
   ) {
     authService.refreshToken().pipe(take(1)).subscribe();
+
     authService.user$.subscribe((user) => {
       this.isAuth = !!user;
     });
+
+    productService.cartItemsCount.subscribe((count) => {
+      this.cartItemsCount = count;
+    });
+  }
+
+  public searchInProducts(): void {
+    this.productService.search.next(this.search);
   }
 
   public logout(): void {
@@ -37,5 +48,21 @@ export class AppComponent {
 
   public closeUserDropdown(): void {
     this.showUserDropdown = false;
+  }
+
+  public emptyCart(): void {
+    this.closeCartDropdown();
+    this.productService.emptyCart();
+  }
+
+  public openCartDropdown(): void {
+    if (!this.cartItemsCount) {
+      return;
+    }
+    this.showCartDropdown = true;
+  }
+
+  public closeCartDropdown(): void {
+    this.showCartDropdown = false;
   }
 }
