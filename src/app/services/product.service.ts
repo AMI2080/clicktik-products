@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Product } from '../types';
+import { Catergory, Product } from '../types';
 
 type ProductsResponse = {
   products: Product[];
@@ -24,6 +24,11 @@ export class ProductService {
   );
 
   public constructor(private http: HttpClient) {}
+
+  public Categories(
+  ): Observable<Catergory[]> {
+    return this.http.get<Catergory[]>(`${environment.ApiUrl}/products/categories`);
+  }
 
   public products(
     limit: number = 12,

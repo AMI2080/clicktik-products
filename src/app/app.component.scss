@@ -79,7 +79,6 @@ header {
 
     .cart {
       position: relative;
-      z-index: 1;
       cursor: pointer;
       
       .count-items {
@@ -106,8 +105,9 @@ header {
         right: 0;
         top: 0;
         bottom: 0;
+        z-index: 1;
       }
-  
+      
       .cart-dropdown {
         position: absolute;
         top: 100%;
@@ -120,6 +120,7 @@ header {
         border: 1px solid #a0a0a0;
         border-radius: 8px;
         max-width: 200px;
+        z-index: 1;
   
         button {
           background-color: rgba(#d55, 0.9);
@@ -145,8 +146,7 @@ header {
     .goto-account {
       margin-inline-start: 6px;
       position: relative;
-      z-index: 1;
-
+      
       & > span {
         cursor: pointer;
       }
@@ -158,8 +158,9 @@ header {
         right: 0;
         top: 0;
         bottom: 0;
+        z-index: 1;
       }
-
+      
       .user-dropdown {
         position: absolute;
         top: 100%;
@@ -172,7 +173,8 @@ header {
         border: 1px solid #a0a0a0;
         border-radius: 8px;
         max-width: 200px;
-
+        z-index: 1;
+        
         button {
           background-color: rgba(#d55, 0.9);
           color: #fff;

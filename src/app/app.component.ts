@@ -51,6 +51,9 @@ export class AppComponent {
   }
 
   public openCartDropdown(): void {
+    if (!this.cartItemsCount) {
+      return;
+    }
     this.showCartDropdown = true;
   }
 

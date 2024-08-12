@@ -13,7 +13,7 @@
           [(ngModel)]="selectedCategory"
           (click)="getProducts()"
         />
-        All ({{ 0 }})
+        All ({{ allItemsCount || 0 }})
       </label>
       @for (category of categories; track $index) {
       <label [ngClass]="{ active: selectedCategory === category.name }">
@@ -22,9 +22,9 @@
           name="category"
           [value]="category.name"
           [(ngModel)]="selectedCategory"
-          (click)="getProducts(category.name)"
+          (click)="getProducts(category.slug)"
         />
-        {{ category.name }} ({{ 0 }})
+        {{ category.name }} ({{ category.count || 0 }})
       </label>
       }
     </aside>
