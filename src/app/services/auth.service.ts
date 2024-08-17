@@ -7,7 +7,6 @@ import {
   Observable,
   of,
   switchMap,
-  take,
   tap,
 } from 'rxjs';
 import { LoginCredential, User } from '../types';
@@ -93,6 +92,10 @@ export class AuthService {
           } else {
             this.logout();
           }
+        }),
+        catchError(() => {
+          this.logout();
+          return of(null);
         })
       );
   }
